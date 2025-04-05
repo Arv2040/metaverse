@@ -1,24 +1,14 @@
-import {Router} from "express";
-
-export const router=Router();
-
-
-
-router.get("/signup",(req,res)=>{
-    res.json(
-        {
-            message:"Signup"
-        }
-    )
-})
-
-router.get("/signin",(req,res)=>{
-      res.json(
-        {
-            message:"Sign in"
-        }
-      )
+import express from 'express';
+import { userLogin,userRegister } from '../../controllers/authcontrollers';
+const router  = express.Router();
 
 
-})
 
+
+router.post("/register",userRegister as any);
+router.post("/login",userLogin as any);
+
+
+
+
+export default router;

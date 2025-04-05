@@ -2,16 +2,16 @@ import mongoose,{Schema,Document} from "mongoose";
 
 //email password avatar url username status(active/inactive/busy/free) type(could be admin or normal user)
 interface Iuser extends Document{
-    avatar_url:String,
-    email:String,
-    password:String,
-    username:String,
+    avatar_url:string,
+    email:string,
+    password:string,
+    username:string,
     status:"active"|"inactive"|"busy"|"free",
     user_type:"admin"|"user"
 }
 
 
-const UserSchema=new Schema<Iuser>({
+const UserSchema=new mongoose.Schema<Iuser>({
     avatar_url:{type:String, required:true},
     email:{type:String,required:true},
     password:{type:String,required:true},
