@@ -9,6 +9,7 @@ app.use(express.json());
 async function connectDB(){
     try{
         await mongoose.connect(process.env.MONGO_URL||" ");
+        console.log("DB CONNECTED");
     }
     catch(error:any){
         console.log("DB not connected",error.message);
