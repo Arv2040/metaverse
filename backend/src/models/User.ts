@@ -1,28 +1,21 @@
-import mongoose,{Schema,Document} from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-//email password avatar url username status(active/inactive/busy/free) type(could be admin or normal user)
-interface Iuser extends Document{
-    avatar_url:string,
-    email:string,
-    password:string,
-    username:string,
-    status:"active"|"inactive"|"busy"|"free",
-    user_type:"admin"|"user"
+
+export interface IUser extends Document {
+  avatar_url: string;
+  email: string;
+  password: string;
+  username: string;
 }
 
+const UserSchema: Schema = new Schema<IUser>(
+  {
+    avatar_url: { type: String, required: true },
+    email: { type: String, required: true, unique: true }, 
+    password: { type: String, required: true },
+    username: { type: String, required: true }
+  },
+  { timestamps: true }
+);
 
-const UserSchema=new mongoose.Schema<Iuser>({
-    avatar_url:{type:String, required:true},
-    email:{type:String,required:true},
-    password:{type:String,required:true},
-    username:{type:String,required:true},
-    status:{type:String, 
-        enum:["active","inactive","busy","free"],
-        required:true},
-    user_type:{type:String,
-        enum:["admin","user"],
-        required:true},
-},{timestamps:true});
-
-
-export default mongoose.model<Iuser>("User",UserSchema)
+export default mongoose.model<IUser>("User", UserSchema);
