@@ -5,7 +5,7 @@ import authroutes from "./routes/routes";
 import { createServer } from "node:http";
 import {Server} from 'socket.io';
 import cors from 'cors';
-import { startSocketServer } from "./controllers/worldController";
+import { startSocketServer } from "./helpers/startsocketserver";
 
 const app = express();
 const corsOptions = {
