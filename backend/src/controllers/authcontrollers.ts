@@ -51,18 +51,14 @@ export const userRegister = async (req: Request, res: Response) => {
 
 export const userLogin = async (req: Request, res: Response) => {
   try {
-    const { username, password, email } = req.body;
+    const { password, email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({
         message: "The user does not exist",
       });
     }
-    if (user?.username != username) {
-      return res.status(401).json({
-        message: "Invalid Username",
-      });
-    }
+    
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
      return res.status(401).json({
