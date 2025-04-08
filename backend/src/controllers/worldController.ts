@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { usersocketmap } from "../helpers/startsocketserver";
 import { socketServer } from "..";
-import { errorMonitor } from "node:events";
+
 
 const createWorld = (req: Request, res: Response) => {
   try {
