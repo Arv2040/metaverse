@@ -12,5 +12,4 @@ const RoomSchema: Schema=new Schema<IRoom>(
         }
     }
 )
-
 export default mongoose.model<IRoom>("Room",RoomSchema);
